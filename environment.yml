@@ -192,4 +192,4 @@ dependencies:
     - toml==0.10.2
     - transformers==4.9.1
     - uritemplate==4.1.1
-prefix: /home/ximinglu/anaconda3/envs/ppo
+prefix: /home/lisj/Software/Anaconda/envs

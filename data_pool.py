@@ -1,5 +1,6 @@
 from typing import List
 from copy import deepcopy
+import json
 
 
 class DataPool:
@@ -27,4 +28,12 @@ class DataPool:
 
     def get_data(self):
         return deepcopy(self.prompt_pool), deepcopy(self.response_pool), deepcopy(self.cat_tokens)
+    
+    def load_data(self, data_path):
+        with open(data_path) as f:
+            data = json.load(f) 
 
+        self.prompt_pool = data['prompts']
+        self.response_pool = data['responses']
+        self.score_pool = data['scores']
+        self.cat_tokens = data['cat_tokens']

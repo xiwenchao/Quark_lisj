@@ -15,7 +15,7 @@ def get_args():
         '--dataset-val', type=str, default='data/toxicity/val.jsonl',
         help='JSONL file containing dev prompts. Each row must contain a prompt at `row["prompt"]["text"]`.')
     parser.add_argument(
-        '--perspective-rate-limit', type=int, default=135, help='number of perspective call per second')
+        '--perspective-rate-limit', type=int, default=3, help='number of perspective call per second')
 
     # reward
     parser.add_argument(
@@ -53,7 +53,9 @@ def get_args():
     parser.add_argument(
         '--total-episodes', type=int, default=3000000, help='total number of episodes')
     parser.add_argument(
-        '--batch_size', type=int, default=128, help='batch size')
+        '--num-epochs', type=int, default=10, help='number of training epochs')
+    parser.add_argument(
+        '--batch_size', type=int, default=56, help='batch size')
     parser.add_argument(
         '--lr', type=float, default=1e-5, help='learning rate')
     parser.add_argument(
@@ -81,6 +83,11 @@ def get_args():
     parser.add_argument(
         '--cuda-deterministic', action='store_false', default=True,
         help="sets flags for determinism when using CUDA (potentially slow!)")
+    
+    # Shijun
+    parser.add_argument(
+        '--dataset-pool', type=str, default='data/toxicity/train_offline.json',
+        help='JSON file containing offline dataset. Each row must contain a prompt at `row["prompt"]`, response at `row["response"]` and cat_tokens at `row["cat_tokens"]`.')
 
     args = parser.parse_args()
     args.cuda = torch.cuda.is_available()
