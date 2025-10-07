@@ -126,3 +126,5 @@ base_model/
 runs/
 offline_dataoutputs/
 offline_outputs/
+
+utilis/constants.py
