@@ -127,3 +127,4 @@ runs/
 offline_dataoutputs/
 offline_outputs/
 
+utils/constants.py
